@@ -1,6 +1,9 @@
 import { type ProductCardProps } from '../../interfaces/interfaces';
+import { useCartContext } from '../../hooks/useCartContext';
+
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const { addToCart } = useCartContext();
   return (
     <div className="rounded-lg overflow-hidden shadow-md bg-white">
       <img
@@ -14,6 +17,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="flex justify-between items-center">
           <span className="font-bold text-blue-600">R$ {product.price}</span>
           <button
+            onClick={() => addToCart(product)}
             className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
           >
             Adicionar

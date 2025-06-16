@@ -12,3 +12,15 @@ export interface ProductCardProps {
   product: Product;
 }
 
+export interface CartItem extends Product {
+  cartId: string;
+}
+
+export interface CartContextType {
+  cart: CartItem[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (cartId: string) => void;
+  clearCart: () => void;
+  cartTotal: number;
+  itemCount: number;
+}
