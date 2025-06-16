@@ -1,9 +1,11 @@
 // src/App.tsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import { Header } from './components/Layout/Header';
-import { Footer } from './components/Layout/Footer';
-import { CartProvider } from './context/CartContext';
+import CartPage from './pages/CartPage';
+
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
+import CartProvider from './context/CartContext';
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useCartContext } from '../../hooks/useCartContext'
+import useCartContext from '../../hooks/useCartContext'
 
-export const Header = () => {
+const Header = () => {
   const { itemCount } = useCartContext();
   return (
     <header className='bg-blue-800 text-white p-4'>
@@ -20,3 +20,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

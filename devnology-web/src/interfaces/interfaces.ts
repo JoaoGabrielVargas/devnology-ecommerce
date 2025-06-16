@@ -10,11 +10,11 @@ export interface Product {
 
 export interface ProductCardProps {
   product: Product;
-}
+};
 
 export interface CartItem extends Product {
   cartId: string;
-}
+};
 
 export interface CartContextType {
   cart: CartItem[];
@@ -23,4 +23,13 @@ export interface CartContextType {
   clearCart: () => void;
   cartTotal: number;
   itemCount: number;
+};
+
+export interface CartItemProps {
+  item: {
+    cartId: string;
+    name: string;
+    price: number;
+    image: string;
+  }
 }

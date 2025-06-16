@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getProducts } from "../services/api";
 import { type Product } from "../interfaces/interfaces";
 
-export const useProducts = () => {
+const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -24,3 +24,5 @@ export const useProducts = () => {
 
   return { products, loading, error };
 };
+
+export default useProducts;

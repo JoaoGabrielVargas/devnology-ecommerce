@@ -1,9 +1,9 @@
-import { ProductCard } from "../components/Product/ProductCard";
-import { useProducts } from "../hooks/useProducts";
+import ProductCard from "../components/Product/ProductCard";
+import useProducts from "../hooks/useProducts";
 
 const HomePage = () => {
   const { products, loading, error } = useProducts();
-  
+
   if (loading) {
     return (
       <main className="container mx-auto px-4 py-8">

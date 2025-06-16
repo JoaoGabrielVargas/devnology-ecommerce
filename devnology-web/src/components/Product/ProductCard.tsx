@@ -1,8 +1,8 @@
 import { type ProductCardProps } from '../../interfaces/interfaces';
-import { useCartContext } from '../../hooks/useCartContext';
+import useCartContext from '../../hooks/useCartContext';
 
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCartContext();
   return (
     <div className="rounded-lg overflow-hidden shadow-md bg-white">
@@ -27,5 +27,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     </div>
   );
 };
+
+export default ProductCard;
 
 
