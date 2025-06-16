@@ -2,7 +2,7 @@ import { type ProductCardProps } from '../../interfaces/interfaces';
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="border rounded-lg overflow-hidden shadow-md">
+    <div className="rounded-lg overflow-hidden shadow-md bg-white">
       <img
         src={product.image}
         alt={product.name}
