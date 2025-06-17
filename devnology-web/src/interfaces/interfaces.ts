@@ -32,4 +32,12 @@ export interface CartItemProps {
     price: number;
     image: string;
   }
-}
+};
+
+export interface SearchAndFilterProps {
+  searchTerm: string;
+  onSearchChange: (term: string) => void;
+  categories: string[];
+  selectedCategory: string;
+  onCategoryChange: (category: string) => void;
+};
