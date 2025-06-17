@@ -29,9 +29,10 @@ const CheckoutPage = () => {
         total: cartTotal
       }
 
-      await createOrder(orderData);
+      const response = await createOrder(orderData);
+      console.log("response", response)
       clearCart();
-      navigate('/confirmation');
+      navigate('/confirmation', {state: {order: response} });
     } catch (error) {
       console.error("Error finishing order")
     } finally {
