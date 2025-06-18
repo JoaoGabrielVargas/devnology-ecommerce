@@ -41,3 +41,26 @@ export interface SearchAndFilterProps {
   selectedCategory: string;
   onCategoryChange: (category: string) => void;
 };
+
+export interface QuickViewContextType {
+  selectedProduct: Product | null;
+  openQuickView: (product: Product) => void;
+  closeQuickView: () => void;
+};
+
+export interface Order {
+  id: number;
+  products: {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+    quantity?: number;
+  }[];
+  total: number;
+  customerName: string;
+  customerEmail: string;
+  customerAddress: string;
+  createdAt: string;
+  status?: string;
+};

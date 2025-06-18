@@ -1,7 +1,7 @@
 // src/components/Layout/Header.tsx
 import { Link } from 'react-router-dom';
-import useCartContext  from '../../hooks/useCartContext';
-import { FiShoppingCart, FiHome } from 'react-icons/fi';
+import useCartContext from '../../hooks/useCartContext';
+import { FiShoppingCart, FiHome, FiShoppingBag } from 'react-icons/fi';
 
 const Header = () => {
   const { itemCount } = useCartContext();
@@ -10,17 +10,17 @@ const Header = () => {
     <header className="bg-indigo-700 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center space-x-2 text-2xl font-bold hover:text-indigo-200 transition-colors"
           >
             <FiHome className="text-2xl" />
             <span>Devnology Shop</span>
           </Link>
-          
-          <nav>
-            <Link 
-              to="/cart" 
+
+          <nav className="flex items-center gap-8">
+            <Link
+              to="/cart"
               className="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-colors relative"
             >
               <FiShoppingCart className="text-xl" />
@@ -30,6 +30,10 @@ const Header = () => {
                   {itemCount}
                 </span>
               )}
+            </Link>
+            <Link to="/orders" className="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-colors relative">
+              <FiShoppingBag className="text-xl" />
+              <span>My orders</span>
             </Link>
           </nav>
         </div>

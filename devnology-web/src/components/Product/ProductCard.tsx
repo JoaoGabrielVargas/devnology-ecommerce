@@ -2,6 +2,7 @@
 import { FiShoppingCart, FiStar } from 'react-icons/fi';
 import { type Product } from '../../interfaces/interfaces';
 import  useCartContext  from '../../hooks/useCartContext';
+import { useQuickView } from '../../context/QuickViewContext';
 
 interface ProductCardProps {
   product: Product;
@@ -9,9 +10,10 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCartContext();
+  const { openQuickView } = useQuickView();
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300" onClick={() => openQuickView(product)}>
       <div className="relative pb-[70%]">
         <img 
           src={product.image} 
@@ -33,7 +35,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="flex justify-between items-center">
           <span className="font-bold text-indigo-700">R$ {product.price}</span>
           <button 
-            onClick={() => addToCart({ ...product})}
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart({ ...product});
+            }}
             className="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors"
             aria-label="Add to cart"
           >

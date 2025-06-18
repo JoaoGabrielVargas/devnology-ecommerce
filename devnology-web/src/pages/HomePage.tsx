@@ -11,7 +11,7 @@ const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  const categories = useMemo(() => [...new Set(products.map(p => p.category))], [products]);
+  const categories = useMemo(() => [...new Set(products.map((p) => p.category))], [products]);
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
