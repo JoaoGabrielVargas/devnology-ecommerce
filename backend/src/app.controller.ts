@@ -4,7 +4,7 @@ import { Order } from './order.entity';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @Get('products')
   async getProducts() {
@@ -12,9 +12,14 @@ export class AppController {
   }
 
   @Post('orders')
-    async createOrder(@Body() orderData: Omit<Order, 'id' | 'createdAt'>) {
-      return this.appService.createOrder(orderData);
-    }
+  async createOrder(@Body() orderData: Omit<Order, 'id' | 'createdAt'>) {
+    return this.appService.createOrder(orderData);
+  }
+
+  @Get('orders')
+  async getAllOrders() {
+    return this.appService.findAll();
+  }
 
   getHello(): string {
     return this.appService.getHello();

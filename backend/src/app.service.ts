@@ -12,10 +12,10 @@ export class AppService {
     private httpService: HttpService,
     @InjectRepository(Order)
     private orderRepository: Repository<Order>
-  ) {}
+  ) { }
 
   private providers = [
-    { 
+    {
       name: 'brazilian',
       url: 'http://616d6bdb6dacbb001794ca17.mockapi.io/devnology/brazilian_provider'
     },
@@ -27,13 +27,13 @@ export class AppService {
 
   async getCombinedProducts() {
     try {
-      const requests = this.providers.map((provider) => 
-      firstValueFrom(this.httpService.get(provider.url))
-      .then((response) => response.data.map((product: any) => this.mapProduct(product, provider.name)
-      ))
-      .catch((error) => {
-        console.error(`Error fetching ${provider.name} products`, error)
-      })
+      const requests = this.providers.map((provider) =>
+        firstValueFrom(this.httpService.get(provider.url))
+          .then((response) => response.data.map((product: any) => this.mapProduct(product, provider.name)
+          ))
+          .catch((error) => {
+            console.error(`Error fetching ${provider.name} products`, error)
+          })
       );
       const results = await Promise.all(requests);
       return results.flat();
@@ -44,23 +44,23 @@ export class AppService {
 
   private mapProduct(product: any, provider: string) {
     return provider === 'brazilian'
-    ? {
+      ? {
         id: `BR-${product.id}`,
-          name: product.nome,
-          description: product.descricao,
-          price: product.preco,
-          category: product.departamento,
-          image: product.imagem,
-          provider,
+        name: product.nome,
+        description: product.descricao,
+        price: product.preco,
+        category: product.departamento,
+        image: product.imagem,
+        provider,
       }
-    : {
+      : {
         id: `EU-${product.id}`,
-          name: product.name,
-          description: product.description,
-          price: product.price,
-          category: product.category,
-          image: product.gallery[0],
-          provider,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        category: product.category,
+        image: product.gallery[0],
+        provider,
       }
   }
 
@@ -68,7 +68,13 @@ export class AppService {
     const order = this.orderRepository.create(orderData);
     return this.orderRepository.save(order);
   }
-  
+
+  async findAll() {
+    return this.orderRepository.find({
+      order: { createdAt: 'DESC' },
+    });
+  }
+
   getHello(): string {
     return 'Hello World!';
   }
