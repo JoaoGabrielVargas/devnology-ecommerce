@@ -3,9 +3,9 @@
 
 Plataforma E-Commerce completa que integra produtos fornecidos por duas API's externas, com opção de pesquisa, filtro, selecionar por categorias, adicionar ao carrinho e finalizar a compra. Todas as compras são persistidas no banco de dados, e o usuário pode ter acesso a sua lista de compras na aplicação. 
 O projeto foi estruturado em apenas um repositório, com as 3 pastas que compõem todos os serviços. São elas: 
-- /backend
-- /devnology-web
-- /devnology-mobile
+/backend
+/devnology-web
+/devnology-mobile
 
 
 ## Pré Requisitos
