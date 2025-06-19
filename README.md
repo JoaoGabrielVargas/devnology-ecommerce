@@ -6,7 +6,7 @@ O projeto foi estruturado em apenas um repositório, com as 3 pastas que compõe
 
 /backend <br>
 /devnology-web <br>
-/devnology-mobile <br>
+/devnology_mobile <br>
 
 
 ## Pré Requisitos
@@ -61,7 +61,7 @@ Testado com os seguintes componentes instalados no Android Studio, mas deve roda
 
 Com o emulador já aberto, em um novo terminal na pasta do repositório digite:
 ```bash
-  cd devnology-mobile
+  cd devnology_mobile
   flutter pub get
   flutter run
 ```
