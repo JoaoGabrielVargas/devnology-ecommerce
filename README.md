@@ -3,9 +3,10 @@
 
 Plataforma E-Commerce completa que integra produtos fornecidos por duas API's externas, com opção de pesquisa, filtro, selecionar por categorias, adicionar ao carrinho e finalizar a compra. Todas as compras são persistidas no banco de dados, e o usuário pode ter acesso a sua lista de compras na aplicação. 
 O projeto foi estruturado em apenas um repositório, com as 3 pastas que compõem todos os serviços. São elas: 
-/backend
-/devnology-web
-/devnology-mobile
+
+/backend <br>
+/devnology-web <br>
+/devnology-mobile <br>
 
 
 ## Pré Requisitos
@@ -68,8 +69,8 @@ Com o emulador já aberto, em um novo terminal na pasta do repositório digite:
 
 ## Decisões técnicas
 
-A proposta do teste era uma aplicação completa, incluindo um sistema web e uma aplicação mobile integradas ao mesmo backend, para utilização em ambos dispositivos. O backend foi desenvolvido em Nest por pura curiosidade, já trabalhava anteriormente com Node e tive certa facilidade de compreender e aplicar os conceitos em Nest para esse projeto, que tinha um backend simples. O banco de dados escolhido para persistência das informações foi o SQLite, um banco simples para uma aplicação simples, porém funcional. 
-Para o desenvolvimento da aplicação Web, foi escolhido o básico Vite + React, com react-router-dom para navegação fluída entre as páginas e estilizado com a ajuda do Tailwind.
-Para o mobile, desenvolvi a aplicação em Flutter como sugerido, tentando trazer o máximo da identidade visual aplicada na versão Web para o mobile, dando a impressão correta de se tratar do mesmo serviço em dispositivos diferentes. Como não possuía muita experiência em Flutter, desenvolvi o básico e tentei entender ao máximo os conceitos dos Widgets e como aplicar as propriedades e como utilizar a hierarquia corretamente. 
-Foi uma jornada completa para construir esses 3 serviços que trabalham juntos, em pouco tempo, foi desafiador porém o resultado final foi bem recompensador. Obrigado pela oportunidade! 
+<p>A proposta do teste era uma aplicação completa, incluindo um sistema web e uma aplicação mobile integradas ao mesmo backend, para utilização em ambos dispositivos. O backend foi desenvolvido em Nest por pura curiosidade, já trabalhava anteriormente com Node e tive certa facilidade de compreender e aplicar os conceitos em Nest para esse projeto, que tinha um backend simples. O banco de dados escolhido para persistência das informações foi o SQLite, um banco simples para uma aplicação simples, porém funcional.  </p>
+<p></p>Para o desenvolvimento da aplicação Web, foi escolhido o básico Vite + React, com react-router-dom para navegação fluída entre as páginas e estilizado com a ajuda do Tailwind. </p>
+<p></p>Para o mobile, desenvolvi a aplicação em Flutter como sugerido, tentando trazer o máximo da identidade visual aplicada na versão Web para o mobile, dando a impressão correta de se tratar do mesmo serviço em dispositivos diferentes. Como não possuía muita experiência em Flutter, desenvolvi o básico e tentei entender ao máximo os conceitos dos Widgets e como aplicar as propriedades e como utilizar a hierarquia corretamente.  </p>
+Foi uma jornada completa para construir esses 3 serviços que trabalham juntos, foi um desafio, porém muito recompensador. Obrigado pela oportunidade! 
 
