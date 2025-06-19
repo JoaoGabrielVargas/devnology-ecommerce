@@ -1,5 +1,8 @@
+import 'package:devnology_mobile/providers/cart_provider.dart';
 import 'package:devnology_mobile/services/api_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../models/product.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _loadProducts() async {
     try {
       final loadedProducts = await apiService.getProducts();
-      
+
       if (!mounted) return;
       setState(() {
         products = loadedProducts;
@@ -55,13 +58,77 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Devnology Shop'),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart),
+            icon: Stack(
+              children: [
+                const Icon(Icons.shopping_cart),
+                if (cart.itemCount > 0)
+                  Positioned(
+                    right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      constraints: const BoxConstraints(
+                        minWidth: 12,
+                        minHeight: 12,
+                      ),
+                      child: Text(
+                        '${cart.itemCount}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 8,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart');
+            },
+          ),
+          IconButton(
+            icon: Stack(
+              children: [
+                const Icon(Icons.shopping_bag),
+                if (cart.itemCount > 0)
+                  Positioned(
+                    right: 50,
+                    child: Container(
+                      padding: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      constraints: const BoxConstraints(
+                        minWidth: 12,
+                        minHeight: 12,
+                      ),
+                      child: Text(
+                        '${cart.itemCount}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 8,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, '/orders');
+            },
           ),
         ],
       ),
@@ -100,10 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
         _buildSearchBar(),
         Expanded(
           child: ListView(
-            children: [
-              _buildCategoryList(),
-              _buildProductGrid(),
-            ],
+            children: [_buildCategoryList(), _buildProductGrid()],
           ),
         ),
       ],
@@ -117,9 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: InputDecoration(
           hintText: 'Search products...',
           prefixIcon: const Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           filled: true,
           fillColor: Colors.grey[100],
         ),
@@ -129,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCategoryList() {
     final categories = products.map((p) => p.category).toSet().toList();
-    
+
     return SizedBox(
       height: 50,
       child: ListView.builder(
@@ -167,11 +229,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildProductCard(Product product) {
+        final cart = Provider.of<CartProvider>(context);
+
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -223,7 +285,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cart.addItem(product);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('${product.name} added to the cart!'),
+                          duration: const Duration(seconds: 2),
+                        )
+                      );
+                    },
                     icon: const Icon(Icons.add_shopping_cart),
                     color: Colors.indigo,
                   ),
